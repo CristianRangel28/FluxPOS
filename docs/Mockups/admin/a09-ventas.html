@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Historial de ventas · FluxPOS</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Public+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/base.css">
+    <link rel="stylesheet" href="../assets/admin.css">
+</head>
+
+<body>
+    <!-- Historial de ventas (HU-18) -->
+    <div class="shell">
+        <aside class="side">
+            <div class="brand">FluxPOS</div><small>Administración</small><a href="a01-dashboard.html"
+                class="">Panel</a><a href="a09-ventas.html" class="on">Ventas</a><a href="a11-compras.html"
+                class="">Compras</a><a href="a02-productos.html" class="">Productos</a><a href="a04-categorias.html"
+                class="">Categorías</a><a href="a05-inventario.html" class="">Inventario</a><a
+                href="a06-movimientos.html" class="">Movimientos</a><a href="a07-clientes.html" class="">Clientes</a><a
+                href="a08-proveedores.html" class="">Proveedores</a><a href="a14-usuarios.html" class="">Usuarios</a>
+            <div class="me">Laura Gómez<br><small>Administradora</small><a href="../shared/x01-login.html">Cerrar
+                    sesión</a></div>
+        </aside>
+        <main class="main">
+            <div class="head">
+                <div>
+                    <h1>Historial de ventas</h1>
+                    <p class="sub">Incluye ventas anuladas</p>
+                </div>
+                <div class="acts"></div>
+            </div>
+            <div class="bar"><input class="grow" placeholder="Buscar por número o vendedor"><select>
+                    <option>Todos los estados</option>
+                    <option>Completadas</option>
+                    <option>Anuladas</option>
+                </select><input type="date"></div>
+            <div class="tw">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="">N.º</th>
+                            <th class="">Fecha</th>
+                            <th class="">Vendedor</th>
+                            <th class="num">Total</th>
+                            <th class="">Estado</th>
+                            <th class=""></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="">#0047</td>
+                            <td class="">06/11 10:42</td>
+                            <td class="">Carlos Rojas</td>
+                            <td class="num">$ 28.000</td>
+                            <td class=""><span class="badge ok">Completada</span></td>
+                            <td class=""><a class="btn ghost sm" href="a10-venta-detalle.html">Ver detalle</a></td>
+                        </tr>
+                        <tr>
+                            <td class="">#0046</td>
+                            <td class="">06/11 10:31</td>
+                            <td class="">Carlos Rojas</td>
+                            <td class="num">$ 64.300</td>
+                            <td class=""><span class="badge ok">Completada</span></td>
+                            <td class=""><a class="btn ghost sm" href="a10-venta-detalle.html">Ver detalle</a></td>
+                        </tr>
+                        <tr>
+                            <td class="">#0045</td>
+                            <td class="">05/11 14:10</td>
+                            <td class="">Ana Prada</td>
+                            <td class="num">$ 9.900</td>
+                            <td class=""><span class="badge bad">Anulada</span></td>
+                            <td class=""><a class="btn ghost sm" href="a10b-venta-anulada.html">Ver detalle</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

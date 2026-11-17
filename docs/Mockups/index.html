@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>FluxPOS · Mockups</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Public+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            background: #F2F4F8;
+            color: #16203A;
+            font: 15px/1.5 'Public Sans', system-ui, sans-serif;
+            padding: 40px;
+            max-width: 1200px;
+            margin: auto
+        }
+
+        h1,
+        h2 {
+            font-family: 'Bricolage Grotesque', sans-serif
+        }
+
+        h1 {
+            font-size: 34px;
+            margin: 0
+        }
+
+        h2 {
+            margin: 34px 0 12px
+        }
+
+        .g {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 12px
+        }
+
+        .c {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            background: #fff;
+            border: 1px solid #DFE4EE;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 14px;
+            text-decoration: none;
+            color: inherit
+        }
+
+        .c span {
+            font-size: 12.5px;
+            color: #5D6A85;
+            font-weight: 600
+        }
+
+        .c small {
+            color: #5D6A85
+        }
+
+        .c.a {
+            border-left-color: #3A47B5
+        }
+
+        .c.s {
+            border-left-color: #0A7F6E
+        }
+
+        .c.x {
+            border-left-color: #8A94AD
+        }
+
+        .c:hover {
+            background: #F8F9FC
+        }
+
+        .pal {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap
+        }
+
+        .sw {
+            display: flex;
+            flex-direction: column;
+            width: 120px;
+            font-size: 13px
+        }
+
+        .sw i {
+            height: 44px;
+            border-radius: 8px;
+            border: 1px solid #DFE4EE
+        }
+
+        .sw span {
+            color: #5D6A85
+        }
+    </style>
+</head>
+
+<body>
+    <h1>FluxPOS · Mockups</h1>
+    <p>29 pantallas en HTML y CSS plano. Ábrelas en el navegador; los modales se abren con clic en el botón que los
+        dispara.</p>
+    <h2>Paleta</h2>
+    <div class="pal">
+        <div class="sw"><i style="background:#3A47B5"></i><b>#3A47B5</b><span>Admin · principal</span></div>
+        <div class="sw"><i style="background:#151A3B"></i><b>#151A3B</b><span>Admin · barra lateral</span></div>
+        <div class="sw"><i style="background:#E3E6F9"></i><b>#E3E6F9</b><span>Admin · suave</span></div>
+        <div class="sw"><i style="background:#0A7F6E"></i><b>#0A7F6E</b><span>Vendedor · principal</span></div>
+        <div class="sw"><i style="background:#0A3F39"></i><b>#0A3F39</b><span>Vendedor · barra superior</span></div>
+        <div class="sw"><i style="background:#D6F0EB"></i><b>#D6F0EB</b><span>Vendedor · suave</span></div>
+        <div class="sw"><i style="background:#16895A"></i><b>#16895A</b><span>Éxito</span></div>
+        <div class="sw"><i style="background:#9A5B00"></i><b>#9A5B00</b><span>Advertencia</span></div>
+        <div class="sw"><i style="background:#C93B3B"></i><b>#C93B3B</b><span>Error</span></div>
+        <div class="sw"><i style="background:#2D6CB5"></i><b>#2D6CB5</b><span>Información</span></div>
+    </div>
+    <h2>Compartidas</h2>
+    <div class="g"><a class="c x" href="shared/x01-login.html"><b>Inicio de sesión</b><span>HU-01</span><small>Pantalla
+                única para ambos roles; al entrar redirige según el rol.</small></a><a class="c x"
+            href="shared/x02-login-error.html"><b>Inicio de sesión con error</b><span>HU-01, HU-25</span><small>Mensaje
+                comprensible que no revela si falló usuario o contraseña.</small></a><a class="c x"
+            href="shared/x03-sin-permisos.html"><b>Acceso no autorizado</b><span>HU-02, HU-25</span><small>Respuesta
+                controlada. También la verá un vendedor que intente abrir Usuarios.</small></a><a class="c x"
+            href="shared/x04-estados-mensajes.html"><b>Mensajes y estados</b><span>HU-25</span><small>Éxito, validación,
+                advertencia, error de conexión, permisos y estado vacío.</small></a><a class="c x"
+            href="shared/x05-cambio-clave.html"><b>Primer ingreso: crear contraseña</b><span>HU-26,
+                HU-01</span><small>Obligatoria para usuarios nuevos o con clave restablecida. Incluye error de
+                validación.</small></a></div>
+    <h2>Administrador</h2>
+    <div class="g"><a class="c a" href="admin/a01-dashboard.html"><b>Panel</b><span>HU-09,
+                HU-18</span><small></small></a><a class="c a"
+            href="admin/a02-productos.html"><b>Productos</b><span>HU-04, HU-05, HU-06</span><small></small></a><a
+            class="c a" href="admin/a03-producto-form.html"><b>Nuevo producto</b><span>HU-04</span><small>Incluye
+                existencia inicial y un ejemplo de error de validación.</small></a><a class="c a"
+            href="admin/a03b-producto-editar.html"><b>Editar producto</b><span>HU-06</span><small>Edición y
+                desactivación. No modifica existencias.</small></a><a class="c a"
+            href="admin/a04-categorias.html"><b>Categorías</b><span>HU-07, HU-08</span><small>Incluye modal de
+                registrar/editar (clic en "Nueva categoría").</small></a><a class="c a"
+            href="admin/a05-inventario.html"><b>Inventario</b><span>HU-09, HU-10</span><small>Incluye modal de ajuste
+                (clic en "Ajustar").</small></a><a class="c a" href="admin/a06-movimientos.html"><b>Movimientos de
+                inventario</b><span>HU-11</span><small></small></a><a class="c a"
+            href="admin/a07-clientes.html"><b>Clientes</b><span>HU-12, HU-13</span><small>Incluye modal de registro
+                (clic en "Registrar cliente").</small></a><a class="c a"
+            href="admin/a08-proveedores.html"><b>Proveedores</b><span>HU-14, HU-15</span><small>Incluye modal de
+                registro. Solo registrar y consultar.</small></a><a class="c a"
+            href="admin/a09-ventas.html"><b>Historial de ventas</b><span>HU-18</span><small></small></a><a class="c a"
+            href="admin/a10-venta-detalle.html"><b>Detalle de venta</b><span>HU-19, HU-22</span><small>Incluye modal de
+                confirmación de anulación.</small></a><a class="c a" href="admin/a10b-venta-anulada.html"><b>Detalle de
+                venta anulada</b><span>HU-19, HU-22</span><small>Venta anulada: se conserva todo el historial, sin botón
+                de anular.</small></a><a class="c a" href="admin/a11-compras.html"><b>Historial de
+                compras</b><span>HU-21</span><small></small></a><a class="c a"
+            href="admin/a12-compra-nueva.html"><b>Registrar compra</b><span>HU-20</span><small></small></a><a
+            class="c a" href="admin/a13-compra-detalle.html"><b>Detalle de
+                compra</b><span>HU-21</span><small></small></a><a class="c a"
+            href="admin/a14-usuarios.html"><b>Usuarios</b><span>HU-26</span><small>Lista con alta, edición, restablecer
+                clave, desactivar y reactivar (modales con clic). Solo visible para el admin.</small></a></div>
+    <h2>Vendedor</h2>
+    <div class="g"><a class="c s" href="seller/s01-vender.html"><b>Punto de venta</b><span>HU-16</span><small>Catálogo +
+                carrito. Muestra una línea con error de stock insuficiente.</small></a><a class="c s"
+            href="seller/s02-cobro.html"><b>Cobro</b><span>HU-17</span><small>Ventana de pago sobre el punto de
+                venta.</small></a><a class="c s" href="seller/s03-venta-exitosa.html"><b>Venta
+                registrada</b><span>HU-16, HU-17, HU-25</span><small>Confirmación tras cobrar.</small></a><a class="c s"
+            href="seller/s04-mis-ventas.html"><b>Mis ventas</b><span>HU-22</span><small></small></a><a class="c s"
+            href="seller/s05-venta-detalle.html"><b>Detalle de venta</b><span>HU-22</span><small>Solo lectura: el
+                vendedor no puede anular.</small></a><a class="c s"
+            href="seller/s06-productos.html"><b>Productos</b><span>HU-05</span><small></small></a><a class="c s"
+            href="seller/s07-existencias.html"><b>Existencias</b><span>HU-09</span><small></small></a><a class="c s"
+            href="seller/s08-clientes.html"><b>Clientes</b><span>HU-12, HU-13</span><small>Incluye modal de registro
+                (clic en "Registrar cliente").</small></a></div>
+</body>
+
+</html>

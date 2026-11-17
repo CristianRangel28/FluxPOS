@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Cobro · FluxPOS</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Public+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/base.css">
+    <link rel="stylesheet" href="../assets/seller.css">
+</head>
+
+<body>
+    <!-- Cobro (HU-17) -->
+    <header class="top"><span class="brand">FluxPOS</span><a href="s01-vender.html" class="on">Vender</a><a
+            href="s04-mis-ventas.html" class="">Mis ventas</a><a href="s06-productos.html" class="">Productos</a><a
+            href="s07-existencias.html" class="">Existencias</a><a href="s08-clientes.html" class="">Clientes</a><span
+            class="me">Carlos Rojas · Vendedor<a href="../shared/x01-login.html">Salir</a></span></header>
+    <main class="main">
+        <div class="head">
+            <div>
+                <h1>Vender</h1>
+                <p class="sub">Toca un producto para agregarlo</p>
+            </div>
+            <div class="acts"></div>
+        </div>
+        <div class="pos">
+            <div>
+                <div class="bar"><input class="grow" placeholder="Buscar producto"></div>
+                <div class="chips"><a class="chip on" href="#">Todos</a><a class="chip" href="#">Granos</a><a
+                        class="chip" href="#">Despensa</a><a class="chip" href="#">Lácteos</a><a class="chip"
+                        href="#">Bebidas</a></div>
+                <div class="tiles"><a class="tile" href="#"><span>Arroz 500 g</span>
+                        <div><b>$ 3.500</b><br><small>42 disp.</small></div>
+                    </a><a class="tile" href="#"><span>Aceite 1 L</span>
+                        <div><b>$ 11.500</b><br><small>18 disp.</small></div>
+                    </a><a class="tile" href="#"><span>Café molido 250 g</span>
+                        <div><b>$ 9.900</b><br><small>6 disp.</small></div>
+                    </a><a class="tile out" href="#"><span>Leche entera 1 L</span>
+                        <div><b>$ 4.500</b><br><small>Agotado</small></div>
+                    </a><a class="tile" href="#"><span>Huevos AA x30</span>
+                        <div><b>$ 18.000</b><br><small>12 disp.</small></div>
+                    </a><a class="tile" href="#"><span>Panela 500 g</span>
+                        <div><b>$ 3.000</b><br><small>27 disp.</small></div>
+                    </a><a class="tile" href="#"><span>Agua 600 ml</span>
+                        <div><b>$ 1.800</b><br><small>60 disp.</small></div>
+                    </a><a class="tile" href="#"><span>Pan tajado</span>
+                        <div><b>$ 5.600</b><br><small>9 disp.</small></div>
+                    </a></div>
+            </div>
+            <div class="card cart">
+                <h2>Venta actual</h2>
+                <div class="f"><label>Cliente</label><select>
+                        <option>Cliente general</option>
+                        <option>María Fernanda Ruiz</option>
+                        <option>Tienda La Esquina</option>
+                    </select></div>
+                <div class="ln">
+                    <div>Arroz 500 g<br><small class="sub">$ 3.500 c/u</small></div>
+                    <div class="qty"><button>−</button><b>3</b><button>+</button></div><b>$ 10.500</b>
+                </div>
+                <div class="ln">
+                    <div>Café molido 250 g<br><small class="sub">$ 9.900 c/u</small></div>
+                    <div class="qty"><button>−</button><b>2</b><button>+</button></div><b>$ 19.800</b>
+                </div>
+                <div class="ln">
+                    <div>Panela 500 g<br><small class="sub">$ 3.000 c/u</small></div>
+                    <div class="qty"><button>−</button><b>2</b><button>+</button></div><b>$ 6.000</b>
+                </div>
+                <div class="tot"><span>Total</span><span>$ 36.300</span></div><a class="btn lg"
+                    href="s02-cobro.html">Cobrar $ 36.300</a>
+                <p class="acts end" style="margin-top:10px"><a class="btn ghost danger sm" href="#">Vaciar venta</a></p>
+            </div>
+        </div>
+        <div class="modal show" id="cobro">
+            <div class="box">
+                <h2>Cobrar venta</h2>
+                <div class="tot" style="margin-top:0"><span>Total a pagar</span><span>$ 36.300</span></div>
+                <div class="f"><label>Método de pago</label><select>
+                        <option>Efectivo</option>
+                        <option>Tarjeta</option>
+                        <option>Transferencia</option>
+                    </select></div>
+                <div class="f"><label>Importe del pago</label><input type="text" value="$ 36.300" placeholder=""><span
+                        class="hint">Debe ser igual al total. No se aceptan abonos ni varios métodos de pago.</span>
+                </div>
+                <div class="f"><label>Referencia</label><input type="text" value=""
+                        placeholder="Solo para tarjeta o transferencia"></div>
+                <div class="acts end"><a class="btn ghost" href="#">Cancelar</a><a class="btn " href="#">Confirmar
+                        pago</a></div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

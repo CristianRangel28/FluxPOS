@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Editar producto · FluxPOS</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Public+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/base.css">
+    <link rel="stylesheet" href="../assets/admin.css">
+</head>
+
+<body>
+    <!-- Editar producto (HU-06) -->
+    <div class="shell">
+        <aside class="side">
+            <div class="brand">FluxPOS</div><small>Administración</small><a href="a01-dashboard.html"
+                class="">Panel</a><a href="a09-ventas.html" class="">Ventas</a><a href="a11-compras.html"
+                class="">Compras</a><a href="a02-productos.html" class="on">Productos</a><a href="a04-categorias.html"
+                class="">Categorías</a><a href="a05-inventario.html" class="">Inventario</a><a
+                href="a06-movimientos.html" class="">Movimientos</a><a href="a07-clientes.html" class="">Clientes</a><a
+                href="a08-proveedores.html" class="">Proveedores</a><a href="a14-usuarios.html" class="">Usuarios</a>
+            <div class="me">Laura Gómez<br><small>Administradora</small><a href="../shared/x01-login.html">Cerrar
+                    sesión</a></div>
+        </aside>
+        <main class="main">
+            <div class="head">
+                <div>
+                    <h1>Editar producto</h1>
+                    <p class="sub">Los cambios de precio no alteran ventas anteriores.</p>
+                </div>
+                <div class="acts"><a class="btn ghost" href="a02-productos.html">Volver</a></div>
+            </div>
+            <div class="card" style="max-width:640px">
+                <div class="f"><label>Nombre</label><input type="text" value="Café molido 250 g" placeholder=""></div>
+                <div class="row2">
+                    <div class="f"><label>Categoría</label><select>
+                            <option>Granos</option>
+                            <option>Despensa</option>
+                            <option>Lácteos</option>
+                            <option>Huevos</option>
+                            <option>Bebidas</option>
+                            <option>Panadería</option>
+                        </select></div>
+                    <div class="f"><label>Estado</label><select>
+                            <option>Activo</option>
+                            <option>Inactivo</option>
+                        </select></div>
+                </div>
+                <div class="row2">
+                    <div class="f"><label>Precio de costo</label><input type="text" value="7800" placeholder=""></div>
+                    <div class="f"><label>Precio de venta</label><input type="text" value="9900" placeholder=""></div>
+                </div>
+                <p class="sub">Un producto inactivo no aparece para vender y conserva su historial. Las existencias se
+                    corrigen desde Inventario.</p>
+                <div class="acts end"><a class="btn ghost" href="a02-productos.html">Cancelar</a><a class="btn "
+                        href="#">Guardar cambios</a></div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

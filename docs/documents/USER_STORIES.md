@@ -2,7 +2,7 @@
 
 **Proyecto:** FluxPOS  
 **Documento:** Historias de usuario, Product Backlog y criterios de aceptación  
-**Versión:** 1.0  
+**Versión:** 1.1  
 **Metodología:** Scrum  
 **Duración del proyecto:** 4 sprints de 1 semana  
 **Roles del sistema:** Administrador (`admin`) y Vendedor (`seller`)
@@ -107,6 +107,26 @@ Como usuario autenticado, quiero cerrar sesión para evitar que otras personas u
 3. El usuario debe regresar a la pantalla de inicio de sesión.
 4. No debe ser posible acceder a funcionalidades protegidas utilizando una sesión que ya no sea válida.
 
+### HU-26 — Gestionar usuarios del sistema
+
+**Historia de usuario**
+
+Como administrador, quiero crear y administrar las cuentas de los vendedores y de otros administradores para controlar quién puede entrar al sistema sin depender de scripts en la base de datos.
+
+**Prioridad:** Alta.
+
+**Criterios de aceptación**
+
+1. La gestión de usuarios debe estar disponible únicamente para el rol `admin`; el backend debe rechazar las solicitudes de otros roles.
+2. El sistema debe mostrar los usuarios registrados con su nombre, usuario, rol, estado y último ingreso.
+3. El administrador debe poder crear un usuario indicando nombre completo, nombre de usuario único, rol, correo opcional y una contraseña temporal.
+4. La contraseña debe almacenarse mediante un mecanismo seguro de hash y no debe volver a mostrarse después de crear el usuario.
+5. Un usuario nuevo, o con la contraseña restablecida, debe definir una contraseña propia en su primer ingreso antes de acceder a otras funcionalidades.
+6. El administrador debe poder editar el nombre, el correo y el rol de un usuario, y restablecer su contraseña.
+7. Los usuarios no deben eliminarse; el administrador debe poder desactivarlos y reactivarlos, conservando su historial de ventas, compras y movimientos.
+8. Un usuario desactivado no debe poder iniciar sesión.
+9. El administrador no debe poder desactivarse a sí mismo ni dejar el sistema sin un administrador activo.
+
 ---
 
 ## Módulo B. Productos y categorías
@@ -115,18 +135,20 @@ Como usuario autenticado, quiero cerrar sesión para evitar que otras personas u
 
 **Historia de usuario**
 
-Como administrador, quiero registrar productos con su información y precios para mantener actualizado el catálogo de la tienda.
+Como administrador, quiero registrar productos con su información, precios y existencia inicial para mantener actualizado el catálogo y el inventario de la tienda.
 
 **Prioridad:** Alta.
 
 **Criterios de aceptación**
 
-1. El sistema debe permitir ingresar el nombre, la categoría, el precio de costo y el precio de venta del producto.
+1. El sistema debe permitir ingresar el nombre, la categoría, el precio de costo, el precio de venta y la existencia inicial del producto.
 2. El sistema debe validar los campos obligatorios.
-3. Los precios deben ser valores válidos y no negativos.
+3. Los precios deben ser valores válidos y no negativos, y la existencia inicial debe ser un número entero mayor o igual que cero.
 4. El producto debe quedar asociado a una categoría existente cuando se seleccione una.
-5. Si el registro es exitoso, el producto debe aparecer en el catálogo.
-6. Si los datos no son válidos, el sistema debe informar el error sin guardar un registro incorrecto.
+5. Al guardar el producto, el sistema debe crear su registro de inventario con la existencia inicial indicada.
+6. Cuando la existencia inicial sea mayor que cero, el sistema debe registrar un movimiento de inventario que la identifique como existencia inicial, con el producto, el usuario, la cantidad anterior, la cantidad nueva y la fecha.
+7. Si el registro es exitoso, el producto debe aparecer en el catálogo.
+8. Si los datos no son válidos, el sistema debe informar el error sin guardar un registro incorrecto ni modificar el inventario.
 
 ### HU-05 — Consultar productos
 
@@ -142,12 +164,14 @@ Como administrador o vendedor autorizado, quiero consultar los productos registr
 2. Cada producto debe mostrar al menos su nombre, categoría y precio de venta.
 3. El sistema debe informar cuando no existan productos registrados.
 4. Los datos mostrados deben corresponder a la información almacenada en la base de datos.
+5. El sistema debe permitir buscar productos por nombre y filtrarlos por categoría.
+6. El administrador debe poder identificar los productos inactivos; el vendedor solo debe ver los productos activos.
 
-### HU-06 — Actualizar productos
+### HU-06 — Actualizar y desactivar productos
 
 **Historia de usuario**
 
-Como administrador, quiero modificar la información de un producto para mantener actualizados sus datos y precios.
+Como administrador, quiero modificar la información de un producto y desactivarlo cuando ya no se venda para mantener actualizado el catálogo sin perder su historial.
 
 **Prioridad:** Alta.
 
@@ -158,6 +182,10 @@ Como administrador, quiero modificar la información de un producto para mantene
 3. El sistema debe validar los nuevos valores antes de guardarlos.
 4. Si la actualización es exitosa, los cambios deben reflejarse en las consultas posteriores.
 5. La actualización no debe modificar indebidamente el historial de ventas anteriores.
+6. La edición de un producto no debe modificar sus existencias; estas se corrigen mediante ajustes de inventario (HU-10).
+7. El administrador debe poder desactivar y reactivar un producto. Los productos no se eliminan.
+8. Un producto inactivo no debe aparecer al registrar ventas, pero debe seguir visible para el administrador en el catálogo y en el historial.
+9. Desactivar un producto no debe alterar sus existencias ni sus registros históricos.
 
 ### HU-07 — Registrar categorías
 
@@ -208,7 +236,8 @@ Como administrador o vendedor autorizado, quiero consultar las existencias de lo
 1. El sistema debe mostrar la cantidad disponible de cada producto.
 2. Las cantidades mostradas deben corresponder al inventario registrado.
 3. El sistema debe permitir identificar los productos con existencias iguales a cero.
-4. Si no existen registros de inventario para los productos consultados, el sistema debe informar la situación de forma controlada.
+4. El sistema debe avisar cuáles productos tienen stock bajo, es decir, existencias menores a un mínimo fijo definido para todos los productos (inicialmente, menos de 10 unidades), distinguiéndolos de los agotados.
+5. Si no existen registros de inventario para los productos consultados, el sistema debe informar la situación de forma controlada.
 
 ### HU-10 — Registrar ajustes de inventario
 
@@ -240,7 +269,7 @@ Como administrador, quiero consultar el historial de movimientos del inventario 
 
 1. El sistema debe mostrar los movimientos registrados.
 2. Cada movimiento debe incluir el producto, el tipo de movimiento, las cantidades anterior y nueva, el usuario y la fecha.
-3. El sistema debe permitir distinguir movimientos de venta, compra, ajuste y anulación de venta.
+3. El sistema debe permitir distinguir movimientos de venta, compra, ajuste, anulación de venta y existencia inicial.
 4. El historial debe conservar los movimientos anteriores después de nuevas operaciones.
 5. El sistema debe mostrar un mensaje cuando no existan movimientos registrados.
 
@@ -278,6 +307,7 @@ Como vendedor autorizado, quiero consultar los clientes registrados para selecci
 2. Cada registro debe mostrar la información necesaria para identificar al cliente.
 3. El sistema debe permitir identificar al cliente general predeterminado.
 4. El sistema debe informar cuando no existan resultados.
+5. Esta versión no incluye la edición ni la eliminación de clientes.
 
 ### HU-14 — Registrar proveedores
 
@@ -309,6 +339,7 @@ Como administrador, quiero consultar los proveedores registrados para identifica
 2. Cada registro debe mostrar el nombre y la información de contacto disponible.
 3. El sistema debe permitir seleccionar un proveedor durante el registro de una compra.
 4. Si no existen proveedores registrados, el sistema debe informar esta situación.
+5. Esta versión no incluye la edición ni la eliminación de proveedores.
 
 ---
 
@@ -318,39 +349,59 @@ Como administrador, quiero consultar los proveedores registrados para identifica
 
 **Historia de usuario**
 
-Como vendedor, quiero registrar una venta con uno o varios productos para documentar la operación comercial y calcular el importe que debe pagar el cliente.
+Como vendedor, quiero registrar una venta con uno o varios productos para documentar la operación comercial, cobrar el total al cliente y actualizar el inventario.
 
 **Prioridad:** Alta.
 
 **Criterios de aceptación**
 
-1. El sistema debe permitir seleccionar uno o varios productos y especificar sus cantidades.
+1. El sistema debe permitir seleccionar uno o varios productos activos y especificar sus cantidades.
 2. Cada producto debe tener una cantidad válida mayor que cero.
 3. El sistema debe utilizar los precios de venta vigentes para calcular los subtotales.
 4. El total debe corresponder a la suma de los subtotales.
 5. El sistema debe validar que exista inventario suficiente para todos los productos.
 6. La venta debe quedar asociada al usuario que la registra y al cliente seleccionado, incluido el cliente general cuando corresponda.
-7. La venta debe guardar sus detalles y los valores correspondientes.
-8. Si alguna validación falla, la venta no debe confirmarse.
-9. La operación debe evitar que se registren ventas duplicadas por reintentos o errores de procesamiento.
+7. La venta se genera ya pagada: se registra junto con su pago por el total (HU-17) y queda en estado `completed`, sin estados intermedios de pendiente de pago.
+8. Al confirmarse la venta, el sistema debe descontar las cantidades vendidas del inventario y registrar un movimiento de tipo venta por cada producto.
+9. La venta debe guardar sus detalles y los valores correspondientes.
+10. Si alguna validación falla, la venta no debe confirmarse ni debe modificarse el inventario.
+11. La operación debe evitar que se registren ventas duplicadas por reintentos o errores de procesamiento.
+12. La venta registrada debe reflejarse de inmediato en el historial de ventas.
 
-### HU-17 — Registrar pagos
+### HU-17 — Registrar el pago de una venta
 
 **Historia de usuario**
 
-Como vendedor, quiero registrar el pago de una venta para dejar constancia de cómo se realizó el cobro.
+Como vendedor, quiero registrar el pago total de una venta con un único método de pago para dejar constancia de cómo se realizó el cobro.
 
 **Prioridad:** Alta.
 
 **Criterios de aceptación**
 
-1. El sistema debe permitir seleccionar el método de pago disponible.
-2. Debe permitir registrar el importe recibido.
-3. El importe debe ser válido y mayor que cero.
+1. El sistema debe permitir seleccionar un único método de pago entre los disponibles.
+2. El importe del pago debe ser igual al total de la venta. El sistema no debe aceptar pagos parciales, abonos ni importes distintos del total.
+3. Cada venta debe tener exactamente un pago, que se registra en la misma operación en que se genera la venta.
 4. El pago debe quedar asociado a la venta correspondiente.
-5. El sistema debe conservar la fecha y los datos de referencia cuando sean aplicables.
-6. El sistema debe validar que los importes registrados cumplan las reglas de pago definidas para la venta.
-7. Si el pago no puede registrarse, el sistema debe informar el error sin dejar información inconsistente.
+5. El sistema debe conservar la fecha y los datos de referencia cuando sean aplicables, como en pagos con tarjeta o transferencia.
+6. El sistema no debe calcular ni registrar el cambio que se devuelve al cliente.
+7. Si el pago no puede registrarse, la venta no debe confirmarse ni debe descontarse el inventario, y el sistema debe informar el error sin dejar información inconsistente.
+
+### HU-22 — Consultar el detalle de una venta
+
+**Historia de usuario**
+
+Como administrador o vendedor autorizado, quiero consultar el detalle de una venta para revisar los productos, las cantidades y los valores de una operación.
+
+**Prioridad:** Media.
+
+**Criterios de aceptación**
+
+1. El sistema debe permitir consultar una venta existente.
+2. Debe mostrar los productos vendidos, sus cantidades, precios unitarios y subtotales.
+3. Debe mostrar el subtotal y el total de la venta.
+4. Debe mostrar su estado actual y los pagos registrados.
+5. Una venta anulada debe seguir siendo consultable.
+6. El vendedor solo debe poder consultar las ventas que él mismo registró.
 
 ### HU-18 — Consultar historial de ventas
 
@@ -372,21 +423,22 @@ Como administrador, quiero consultar el historial de ventas para revisar las ope
 
 **Historia de usuario**
 
-Como administrador autorizado, quiero anular una venta cuando corresponda para corregir una operación sin perder su historial.
+Como administrador autorizado, quiero anular una venta cuando corresponda, indicando el motivo, para corregir una operación sin perder su historial.
 
 **Prioridad:** Alta.
 
 **Criterios de aceptación**
 
 1. El sistema debe permitir anular una venta que se encuentre en estado `completed`.
-2. La venta anulada debe conservar su registro y sus detalles históricos.
-3. El sistema debe registrar el usuario que realizó la anulación y su fecha.
-4. El inventario debe recibir la devolución de las cantidades correspondientes.
-5. La operación debe registrar los movimientos de tipo `sale_reversal`.
-6. Una misma venta no debe poder anularse dos veces.
-7. La anulación y la actualización del inventario deben ejecutarse de manera consistente.
-8. Los pagos originales deben conservarse como parte del historial.
-9. Si la anulación falla, no deben quedar aplicadas parcialmente sus modificaciones.
+2. El sistema debe exigir un motivo para anular la venta y conservarlo en el historial.
+3. La venta anulada debe conservar su registro y sus detalles históricos.
+4. El sistema debe registrar el usuario que realizó la anulación, su fecha y el motivo.
+5. El inventario debe recibir la devolución de las cantidades correspondientes.
+6. La operación debe registrar los movimientos de tipo `sale_reversal`.
+7. Una misma venta no debe poder anularse dos veces.
+8. La anulación y la actualización del inventario deben ejecutarse de manera consistente.
+9. El pago original debe conservarse como parte del historial.
+10. Si la anulación falla, no deben quedar aplicadas parcialmente sus modificaciones.
 
 ---
 
@@ -430,23 +482,7 @@ Como administrador, quiero consultar las compras registradas para revisar las ad
 
 ---
 
-## Módulo G. Consultas y mantenimiento
-
-### HU-22 — Consultar el detalle de una venta
-
-**Historia de usuario**
-
-Como administrador o vendedor autorizado, quiero consultar el detalle de una venta para revisar los productos, las cantidades y los valores de una operación.
-
-**Prioridad:** Media.
-
-**Criterios de aceptación**
-
-1. El sistema debe permitir consultar una venta existente.
-2. Debe mostrar los productos vendidos, sus cantidades, precios unitarios y subtotales.
-3. Debe mostrar el subtotal y el total de la venta.
-4. Debe mostrar su estado actual y los pagos registrados.
-5. Una venta anulada debe seguir siendo consultable.
+## Módulo G. Integridad, mensajes y mantenimiento
 
 ### HU-23 — Mantener la integridad de las operaciones
 
@@ -506,7 +542,7 @@ El Product Backlog es la lista priorizada de funcionalidades, mejoras y trabajos
 
 El Product Owner será responsable de mantener su prioridad y claridad, trabajando con el equipo para comprender las necesidades y ajustar el alcance.
 
-La siguiente tabla reúne las 25 historias de usuario y propone una prioridad inicial.
+La siguiente tabla reúne las 26 historias de usuario y propone una prioridad inicial.
 
 | ID | Historia de usuario | Prioridad | Dependencia principal |
 |---|---|---|---|
@@ -515,7 +551,7 @@ La siguiente tabla reúne las 25 historias de usuario y propone una prioridad in
 | HU-03 | Cerrar sesión | Alta | HU-01 |
 | HU-04 | Registrar productos | Alta | Categorías |
 | HU-05 | Consultar productos | Alta | Base de datos de productos |
-| HU-06 | Actualizar productos | Alta | HU-04 |
+| HU-06 | Actualizar y desactivar productos | Alta | HU-04 |
 | HU-07 | Registrar categorías | Media | Base de datos |
 | HU-08 | Consultar y actualizar categorías | Media | HU-07 |
 | HU-09 | Consultar existencias | Alta | Inventario |
@@ -526,7 +562,7 @@ La siguiente tabla reúne las 25 historias de usuario y propone una prioridad in
 | HU-14 | Registrar proveedores | Media | Base de datos de proveedores |
 | HU-15 | Consultar proveedores | Media | HU-14 |
 | HU-16 | Registrar una venta | Alta | HU-05, HU-09 y cliente general |
-| HU-17 | Registrar pagos | Alta | HU-16 |
+| HU-17 | Registrar el pago de una venta | Alta | HU-16 |
 | HU-18 | Consultar historial de ventas | Media | HU-16 |
 | HU-19 | Anular una venta | Alta | HU-16 y HU-09 |
 | HU-20 | Registrar una compra | Alta | HU-14 y productos |
@@ -535,6 +571,7 @@ La siguiente tabla reúne las 25 historias de usuario y propone una prioridad in
 | HU-23 | Mantener la integridad de las operaciones | Alta | Operaciones de base de datos |
 | HU-24 | Actualizar automáticamente la fecha de modificación | Baja | Tablas con `updated_at` |
 | HU-25 | Mostrar mensajes y manejar errores | Alta | Transversal a todos los módulos |
+| HU-26 | Gestionar usuarios del sistema | Alta | HU-01 y HU-02 |
 
 ## 4.2. Orden sugerido de implementación
 
@@ -543,7 +580,7 @@ Se recomienda desarrollar primero las capacidades técnicas y funcionales necesa
 El orden general propuesto es:
 
 1. Configuración del proyecto y conexión con PostgreSQL.
-2. Autenticación y permisos.
+2. Autenticación, permisos y gestión de usuarios.
 3. Productos y categorías.
 4. Clientes y proveedores.
 5. Consulta de inventario.
@@ -603,6 +640,11 @@ Además de los criterios particulares de cada historia, se establecen las siguie
 - Las operaciones transaccionales deben probarse ante fallos.
 - Los cambios integrados no deben romper las funcionalidades previamente verificadas.
 
+## 5.5. Consulta de listados
+
+- Los listados principales (productos, inventario, movimientos, clientes, proveedores, ventas, compras y usuarios) deben permitir buscar por nombre o número y filtrar por estado, categoría, tipo o fecha, según corresponda.
+- Cuando no existan resultados, el sistema debe informarlo de forma clara.
+
 ---
 
 # 6. Definition of Ready
@@ -645,7 +687,7 @@ La asignación definitiva de las historias a los sprints se realizará durante l
 Como orientación inicial:
 
 - **Sprint 1:** configuración técnica, repositorio, conexión con la base de datos y primera comunicación entre frontend y backend.
-- **Sprint 2:** autenticación, permisos y gestión básica de productos, categorías, clientes y proveedores.
+- **Sprint 2:** autenticación, permisos, gestión de usuarios y gestión básica de productos, categorías, clientes y proveedores.
 - **Sprint 3:** ventas, pagos, compras, inventario y movimientos.
 - **Sprint 4:** anulación de ventas, consultas históricas, integración, pruebas y correcciones.
 
@@ -667,6 +709,10 @@ Los cambios deberán considerar:
 - Los acuerdos con el profesor y los objetivos académicos.
 
 Las modificaciones importantes deberán quedar registradas para que todo el equipo trabaje con la misma información.
+
+| Versión | Cambios |
+|---|---|
+| 1.1 | Se agrega HU-26 (gestionar usuarios). HU-04 incluye la existencia inicial como movimiento de inventario. HU-06 incluye desactivar y reactivar productos. HU-09 incluye el aviso de stock bajo. HU-11 distingue los movimientos de existencia inicial. HU-16 define que la venta se genera ya pagada y descuenta el inventario. HU-17 exige pago completo, único y sin abonos. HU-19 exige un motivo de anulación. HU-13 y HU-15 aclaran que no incluyen edición. HU-22 pasa al Módulo E y el Módulo G se renombra. Se agrega el criterio general 5.5 sobre listados. |
 
 ---
 

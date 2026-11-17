@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Usuarios · FluxPOS</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Public+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/base.css">
+    <link rel="stylesheet" href="../assets/admin.css">
+</head>
+
+<body>
+    <!-- Usuarios (HU-26) -->
+    <div class="shell">
+        <aside class="side">
+            <div class="brand">FluxPOS</div><small>Administración</small><a href="a01-dashboard.html"
+                class="">Panel</a><a href="a09-ventas.html" class="">Ventas</a><a href="a11-compras.html"
+                class="">Compras</a><a href="a02-productos.html" class="">Productos</a><a href="a04-categorias.html"
+                class="">Categorías</a><a href="a05-inventario.html" class="">Inventario</a><a
+                href="a06-movimientos.html" class="">Movimientos</a><a href="a07-clientes.html" class="">Clientes</a><a
+                href="a08-proveedores.html" class="">Proveedores</a><a href="a14-usuarios.html" class="on">Usuarios</a>
+            <div class="me">Laura Gómez<br><small>Administradora</small><a href="../shared/x01-login.html">Cerrar
+                    sesión</a></div>
+        </aside>
+        <main class="main">
+            <div class="head">
+                <div>
+                    <h1>Usuarios</h1>
+                    <p class="sub">Quién puede entrar al sistema y con qué rol</p>
+                </div>
+                <div class="acts"><a class="btn " href="#nuevo">Añadir vendedor</a></div>
+            </div>
+            <div class="bar"><input class="grow" placeholder="Buscar por nombre o usuario"><select>
+                    <option>Todos los roles</option>
+                    <option>Vendedor</option>
+                    <option>Administrador</option>
+                </select><select>
+                    <option>Todos los estados</option>
+                    <option>Activos</option>
+                    <option>Inactivos</option>
+                </select></div>
+            <div class="tw">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="">Nombre</th>
+                            <th class="">Usuario</th>
+                            <th class="">Rol</th>
+                            <th class="">Estado</th>
+                            <th class="">Último ingreso</th>
+                            <th class=""></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="">Laura Gómez</td>
+                            <td class="">lgomez</td>
+                            <td class=""><span class="badge info">Administrador</span></td>
+                            <td class=""><span class="badge ok">Activo</span></td>
+                            <td class="">Hoy 08:02</td>
+                            <td class=""><a class="btn ghost sm" href="#editar">Editar</a> <small class="sub">No puedes
+                                    desactivarte</small></td>
+                        </tr>
+                        <tr>
+                            <td class="">Carlos Rojas</td>
+                            <td class="">crojas</td>
+                            <td class=""><span class="badge muted">Vendedor</span></td>
+                            <td class=""><span class="badge ok">Activo</span></td>
+                            <td class="">Hoy 07:55</td>
+                            <td class=""><a class="btn ghost sm" href="#editar">Editar</a> <a class="btn ghost sm"
+                                    href="#reset">Restablecer clave</a> <a class="btn ghost danger sm"
+                                    href="#desactivar">Desactivar</a></td>
+                        </tr>
+                        <tr>
+                            <td class="">Ana Prada</td>
+                            <td class="">aprada</td>
+                            <td class=""><span class="badge muted">Vendedor</span></td>
+                            <td class=""><span class="badge ok">Activo</span></td>
+                            <td class="">Ayer 18:20</td>
+                            <td class=""><a class="btn ghost sm" href="#editar">Editar</a> <a class="btn ghost sm"
+                                    href="#reset">Restablecer clave</a> <a class="btn ghost danger sm"
+                                    href="#desactivar">Desactivar</a></td>
+                        </tr>
+                        <tr>
+                            <td class="">Julián Mejía</td>
+                            <td class="">jmejia</td>
+                            <td class=""><span class="badge muted">Vendedor</span></td>
+                            <td class=""><span class="badge warn">Debe cambiar clave</span></td>
+                            <td class="">Nunca</td>
+                            <td class=""><a class="btn ghost sm" href="#editar">Editar</a> <a class="btn ghost sm"
+                                    href="#reset">Restablecer clave</a> <a class="btn ghost danger sm"
+                                    href="#desactivar">Desactivar</a></td>
+                        </tr>
+                        <tr>
+                            <td class="">Sofía Díaz</td>
+                            <td class="">sdiaz</td>
+                            <td class=""><span class="badge muted">Vendedor</span></td>
+                            <td class=""><span class="badge bad">Inactivo</span></td>
+                            <td class="">28/10 17:45</td>
+                            <td class=""><a class="btn ghost sm" href="#editar">Editar</a> <a class="btn ghost sm"
+                                    href="#">Reactivar</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="sub" style="margin-top:12px">Los usuarios no se eliminan: al desactivarlos se conserva su
+                historial de ventas, compras y movimientos.</p>
+            <div class="modal" id="nuevo">
+                <div class="box">
+                    <h2>Añadir vendedor</h2>
+                    <div class="f"><label>Nombre completo</label><input type="text" value=""
+                            placeholder="ej. Carlos Rojas"></div>
+                    <div class="row2">
+                        <div class="f"><label>Usuario</label><input type="text" value="" placeholder="ej. crojas"><span
+                                class="hint">Sin espacios. Lo usará para entrar.</span></div>
+                        <div class="f"><label>Rol</label><select>
+                                <option>Vendedor</option>
+                                <option>Administrador</option>
+                            </select></div>
+                    </div>
+                    <div class="f"><label>Correo electrónico</label><input type="email" value="" placeholder="Opcional">
+                    </div>
+                    <div class="f"><label>Contraseña temporal</label><input type="text" value="Flux-4821"
+                            placeholder=""><span class="hint">Entrégasela al vendedor: deberá cambiarla en su primer
+                            ingreso.</span></div>
+                    <div class="acts end"><a class="btn ghost" href="#">Cancelar</a><a class="btn " href="#">Crear
+                            usuario</a></div>
+                </div>
+            </div>
+            <div class="modal" id="editar">
+                <div class="box">
+                    <h2>Editar usuario</h2>
+                    <div class="f"><label>Nombre completo</label><input type="text" value="Carlos Rojas" placeholder="">
+                    </div>
+                    <div class="row2">
+                        <div class="f"><label>Usuario</label><input type="text" value="crojas" placeholder=""><span
+                                class="hint">No se puede cambiar.</span></div>
+                        <div class="f"><label>Rol</label><select>
+                                <option>Vendedor</option>
+                                <option>Administrador</option>
+                            </select></div>
+                    </div>
+                    <div class="f"><label>Correo electrónico</label><input type="email" value="carlos@correo.com"
+                            placeholder=""></div>
+                    <div class="acts end"><a class="btn ghost" href="#">Cancelar</a><a class="btn " href="#">Guardar
+                            cambios</a></div>
+                </div>
+            </div>
+            <div class="modal" id="reset">
+                <div class="box">
+                    <h2>Restablecer contraseña</h2>
+                    <p>Se creará una contraseña temporal para <b>Carlos Rojas</b>. La clave actual dejará de funcionar y
+                        deberá cambiarla al entrar.</p>
+                    <div class="f"><label>Nueva contraseña temporal</label><input type="text" value="Flux-7305"
+                            placeholder=""></div>
+                    <div class="acts end"><a class="btn ghost" href="#">Cancelar</a><a class="btn " href="#">Restablecer
+                            clave</a></div>
+                </div>
+            </div>
+            <div class="modal" id="desactivar">
+                <div class="box">
+                    <h2>Desactivar a Carlos Rojas</h2>
+                    <div class="toast warn">No podrá iniciar sesión y se cerrará su sesión abierta.</div>
+                    <p>Sus ventas y movimientos se conservan en el historial. Podrás reactivarlo cuando quieras.</p>
+                    <div class="acts end"><a class="btn ghost" href="#">Cancelar</a><a class="btn danger"
+                            href="#">Desactivar usuario</a></div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

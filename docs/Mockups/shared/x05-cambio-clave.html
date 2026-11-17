@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Primer ingreso: crear contraseña · FluxPOS</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Public+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/base.css">
+    <link rel="stylesheet" href="../assets/admin.css">
+</head>
+
+<body>
+    <!-- Primer ingreso: crear contraseña (HU-26, HU-01) -->
+    <div style="min-height:100vh;display:grid;place-items:center;padding:24px">
+        <div class="card" style="max-width:420px;width:100%">
+            <h1>Crea tu contraseña</h1>
+            <p class="sub" style="margin-bottom:18px">Es tu primer ingreso. Cambia la clave temporal por una propia para
+                continuar.</p>
+            <div class="f"><label>Contraseña temporal</label><input type="password" value="" placeholder=""></div>
+            <div class="f"><label>Nueva contraseña</label><input type="password" value="" placeholder=""><span
+                    class="hint">Mínimo 8 caracteres, con letras y números.</span></div>
+            <div class="f err"><label>Repite la nueva contraseña</label><input type="password" value=""
+                    placeholder=""><span class="msg">Las contraseñas no coinciden.</span></div><a class="btn lg"
+                href="../seller/s01-vender.html">Guardar y entrar</a>
+        </div>
+    </div>
+</body>
+
+</html>
