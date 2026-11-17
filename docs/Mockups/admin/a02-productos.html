@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Productos · FluxPOS</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Public+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/base.css">
+    <link rel="stylesheet" href="../assets/admin.css">
+</head>
+
+<body>
+    <!-- Productos (HU-04, HU-05, HU-06) -->
+    <div class="shell">
+        <aside class="side">
+            <div class="brand">FluxPOS</div><small>Administración</small><a href="a01-dashboard.html"
+                class="">Panel</a><a href="a09-ventas.html" class="">Ventas</a><a href="a11-compras.html"
+                class="">Compras</a><a href="a02-productos.html" class="on">Productos</a><a href="a04-categorias.html"
+                class="">Categorías</a><a href="a05-inventario.html" class="">Inventario</a><a
+                href="a06-movimientos.html" class="">Movimientos</a><a href="a07-clientes.html" class="">Clientes</a><a
+                href="a08-proveedores.html" class="">Proveedores</a><a href="a14-usuarios.html" class="">Usuarios</a>
+            <div class="me">Laura Gómez<br><small>Administradora</small><a href="../shared/x01-login.html">Cerrar
+                    sesión</a></div>
+        </aside>
+        <main class="main">
+            <div class="head">
+                <div>
+                    <h1>Productos</h1>
+                    <p class="sub">9 productos en el catálogo</p>
+                </div>
+                <div class="acts"><a class="btn " href="a03-producto-form.html">Nuevo producto</a></div>
+            </div>
+            <div class="bar"><input class="grow" placeholder="Buscar por nombre"><select>
+                    <option>Todas las categorías</option>
+                    <option>Granos</option>
+                    <option>Despensa</option>
+                    <option>Lácteos</option>
+                    <option>Huevos</option>
+                    <option>Bebidas</option>
+                    <option>Panadería</option>
+                </select></div>
+            <div class="tw">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="">Producto</th>
+                            <th class="">Categoría</th>
+                            <th class="num">Costo</th>
+                            <th class="num">Precio de venta</th>
+                            <th class="">Existencias</th>
+                            <th class="">Estado</th>
+                            <th class=""></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="">Arroz 500 g</td>
+                            <td class="">Granos</td>
+                            <td class="num">$ 2.800</td>
+                            <td class="num">$ 3.500</td>
+                            <td class=""><span class="badge ok">42</span></td>
+                            <td class=""><span class="badge ok">Activo</span></td>
+                            <td class=""><a class="btn ghost sm" href="a03b-producto-editar.html">Editar</a></td>
+                        </tr>
+                        <tr>
+                            <td class="">Aceite 1 L</td>
+                            <td class="">Despensa</td>
+                            <td class="num">$ 9.200</td>
+                            <td class="num">$ 11.500</td>
+                            <td class=""><span class="badge ok">18</span></td>
+                            <td class=""><span class="badge ok">Activo</span></td>
+                            <td class=""><a class="btn ghost sm" href="a03b-producto-editar.html">Editar</a></td>
+                        </tr>
+                        <tr>
+                            <td class="">Café molido 250 g</td>
+                            <td class="">Despensa</td>
+                            <td class="num">$ 7.800</td>
+                            <td class="num">$ 9.900</td>
+                            <td class=""><span class="badge warn">6 · bajo</span></td>
+                            <td class=""><span class="badge ok">Activo</span></td>
+                            <td class=""><a class="btn ghost sm" href="a03b-producto-editar.html">Editar</a></td>
+                        </tr>
+                        <tr>
+                            <td class="">Leche entera 1 L</td>
+                            <td class="">Lácteos</td>
+                            <td class="num">$ 3.600</td>
+                            <td class="num">$ 4.500</td>
+                            <td class=""><span class="badge bad">Agotado</span></td>
+                            <td class=""><span class="badge ok">Activo</span></td>
+                            <td class=""><a class="btn ghost sm" href="a03b-producto-editar.html">Editar</a></td>
+                        </tr>
+                        <tr>
+                            <td class="">Huevos AA x30</td>
+                            <td class="">Huevos</td>
+                            <td class="num">$ 15.500</td>
+                            <td class="num">$ 18.000</td>
+                            <td class=""><span class="badge ok">12</span></td>
+                            <td class=""><span class="badge ok">Activo</span></td>
+                            <td class=""><a class="btn ghost sm" href="a03b-producto-editar.html">Editar</a></td>
+                        </tr>
+                        <tr>
+                            <td class="">Panela 500 g</td>
+                            <td class="">Despensa</td>
+                            <td class="num">$ 2.300</td>
+                            <td class="num">$ 3.000</td>
+                            <td class=""><span class="badge ok">27</span></td>
+                            <td class=""><span class="badge ok">Activo</span></td>
+                            <td class=""><a class="btn ghost sm" href="a03b-producto-editar.html">Editar</a></td>
+                        </tr>
+                        <tr>
+                            <td class="">Agua 600 ml</td>
+                            <td class="">Bebidas</td>
+                            <td class="num">$ 1.100</td>
+                            <td class="num">$ 1.800</td>
+                            <td class=""><span class="badge ok">60</span></td>
+                            <td class=""><span class="badge ok">Activo</span></td>
+                            <td class=""><a class="btn ghost sm" href="a03b-producto-editar.html">Editar</a></td>
+                        </tr>
+                        <tr>
+                            <td class="">Pan tajado</td>
+                            <td class="">Panadería</td>
+                            <td class="num">$ 4.400</td>
+                            <td class="num">$ 5.600</td>
+                            <td class=""><span class="badge warn">9 · bajo</span></td>
+                            <td class=""><span class="badge ok">Activo</span></td>
+                            <td class=""><a class="btn ghost sm" href="a03b-producto-editar.html">Editar</a></td>
+                        </tr>
+                        <tr>
+                            <td class="">Galletas de sal</td>
+                            <td class="">Despensa</td>
+                            <td class="num">$ 1.200</td>
+                            <td class="num">$ 2.000</td>
+                            <td class=""><span class="badge muted">0</span></td>
+                            <td class=""><span class="badge muted">Inactivo</span></td>
+                            <td class=""><a class="btn ghost sm" href="a03b-producto-editar.html">Editar</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

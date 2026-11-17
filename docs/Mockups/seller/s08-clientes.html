@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Clientes · FluxPOS</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Public+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/base.css">
+    <link rel="stylesheet" href="../assets/seller.css">
+</head>
+
+<body>
+    <!-- Clientes (HU-12, HU-13) -->
+    <header class="top"><span class="brand">FluxPOS</span><a href="s01-vender.html" class="">Vender</a><a
+            href="s04-mis-ventas.html" class="">Mis ventas</a><a href="s06-productos.html" class="">Productos</a><a
+            href="s07-existencias.html" class="">Existencias</a><a href="s08-clientes.html" class="on">Clientes</a><span
+            class="me">Carlos Rojas · Vendedor<a href="../shared/x01-login.html">Salir</a></span></header>
+    <main class="main">
+        <div class="head">
+            <div>
+                <h1>Clientes</h1>
+                <p class="sub">Se pueden asociar a una venta</p>
+            </div>
+            <div class="acts"><a class="btn " href="#nuevo">Registrar cliente</a></div>
+        </div>
+        <div class="bar"><input class="grow" placeholder="Buscar por nombre o documento"></div>
+        <div class="tw">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="">Nombre</th>
+                        <th class="">Documento</th>
+                        <th class="">Teléfono</th>
+                        <th class="">Correo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="">Cliente general</td>
+                        <td class=""><span class="badge info">Predeterminado</span></td>
+                        <td class="">-</td>
+                        <td class="">-</td>
+                    </tr>
+                    <tr>
+                        <td class="">María Fernanda Ruiz</td>
+                        <td class="">1.098.765.432</td>
+                        <td class="">300 456 7890</td>
+                        <td class="">maria@correo.com</td>
+                    </tr>
+                    <tr>
+                        <td class="">Tienda La Esquina</td>
+                        <td class="">900.123.456</td>
+                        <td class="">317 222 3344</td>
+                        <td class="">-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="modal" id="nuevo">
+            <div class="box">
+                <h2>Registrar cliente</h2>
+                <div class="f"><label>Nombre</label><input type="text" value="" placeholder="Obligatorio"></div>
+                <div class="row2">
+                    <div class="f"><label>Documento</label><input type="text" value="" placeholder="Opcional"></div>
+                    <div class="f"><label>Teléfono</label><input type="text" value="" placeholder="Opcional"></div>
+                </div>
+                <div class="f"><label>Correo electrónico</label><input type="email" value="" placeholder="Opcional">
+                </div>
+                <div class="acts end"><a class="btn ghost" href="#">Cancelar</a><a class="btn " href="#">Guardar
+                        cliente</a></div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

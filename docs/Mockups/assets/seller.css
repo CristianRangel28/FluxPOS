@@ -1,0 +1,69 @@
+/* TEMA VENDEDOR - cambia estos 4 colores y toda la interfaz del vendedor se actualiza */
+:root {
+    --primary: #0A7F6E;
+    --primary-ink: #fff;
+    --primary-soft: #D6F0EB;
+    --side: #0A3F39
+}
+
+.top {
+    background: var(--side);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 24px;
+    height: 64px;
+    flex-wrap: wrap
+}
+
+.brand {
+    font: 700 22px 'Bricolage Grotesque', sans-serif;
+    margin-right: 20px
+}
+
+.top a {
+    color: #BFE3DD;
+    text-decoration: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 500
+}
+
+.top a:hover {
+    background: rgba(255, 255, 255, .08)
+}
+
+.top a.on {
+    background: #fff;
+    color: var(--side);
+    font-weight: 600
+}
+
+.top .me {
+    margin-left: auto;
+    font-size: 14px;
+    color: #BFE3DD
+}
+
+.top .me a {
+    padding: 0 0 0 12px;
+    display: inline
+}
+
+.main {
+    padding: 24px 32px;
+    max-width: 1400px;
+    margin: 0 auto
+}
+
+@media(max-width:900px) {
+    .main {
+        padding: 16px
+    }
+
+    .top {
+        padding: 8px 12px;
+        height: auto
+    }
+}

@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Inventario · FluxPOS</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Public+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/base.css">
+    <link rel="stylesheet" href="../assets/admin.css">
+</head>
+
+<body>
+    <!-- Inventario (HU-09, HU-10) -->
+    <div class="shell">
+        <aside class="side">
+            <div class="brand">FluxPOS</div><small>Administración</small><a href="a01-dashboard.html"
+                class="">Panel</a><a href="a09-ventas.html" class="">Ventas</a><a href="a11-compras.html"
+                class="">Compras</a><a href="a02-productos.html" class="">Productos</a><a href="a04-categorias.html"
+                class="">Categorías</a><a href="a05-inventario.html" class="on">Inventario</a><a
+                href="a06-movimientos.html" class="">Movimientos</a><a href="a07-clientes.html" class="">Clientes</a><a
+                href="a08-proveedores.html" class="">Proveedores</a><a href="a14-usuarios.html" class="">Usuarios</a>
+            <div class="me">Laura Gómez<br><small>Administradora</small><a href="../shared/x01-login.html">Cerrar
+                    sesión</a></div>
+        </aside>
+        <main class="main">
+            <div class="head">
+                <div>
+                    <h1>Inventario</h1>
+                    <p class="sub">Existencias actuales. Se marcan como bajos los productos con menos de 10 unidades.
+                    </p>
+                </div>
+                <div class="acts"><a class="btn ghost" href="a06-movimientos.html">Ver movimientos</a></div>
+            </div>
+            <div class="bar"><input class="grow" placeholder="Buscar por nombre"><select>
+                    <option>Todos</option>
+                    <option>Solo agotados</option>
+                    <option>Solo bajos</option>
+                </select></div>
+            <div class="tw">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="">Producto</th>
+                            <th class="">Categoría</th>
+                            <th class="num">Existencias</th>
+                            <th class="">Estado</th>
+                            <th class=""></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="">Arroz 500 g</td>
+                            <td class="">Granos</td>
+                            <td class="num">42</td>
+                            <td class=""><span class="badge ok">42</span></td>
+                            <td class=""><a class="btn ghost sm" href="#ajustar">Ajustar</a></td>
+                        </tr>
+                        <tr>
+                            <td class="">Aceite 1 L</td>
+                            <td class="">Despensa</td>
+                            <td class="num">18</td>
+                            <td class=""><span class="badge ok">18</span></td>
+                            <td class=""><a class="btn ghost sm" href="#ajustar">Ajustar</a></td>
+                        </tr>
+                        <tr>
+                            <td class="">Café molido 250 g</td>
+                            <td class="">Despensa</td>
+                            <td class="num">6</td>
+                            <td class=""><span class="badge warn">6 · bajo</span></td>
+                            <td class=""><a class="btn ghost sm" href="#ajustar">Ajustar</a></td>
+                        </tr>
+                        <tr>
+                            <td class="">Leche entera 1 L</td>
+                            <td class="">Lácteos</td>
+                            <td class="num">0</td>
+                            <td class=""><span class="badge bad">Agotado</span></td>
+                            <td class=""><a class="btn ghost sm" href="#ajustar">Ajustar</a></td>
+                        </tr>
+                        <tr>
+                            <td class="">Huevos AA x30</td>
+                            <td class="">Huevos</td>
+                            <td class="num">12</td>
+                            <td class=""><span class="badge ok">12</span></td>
+                            <td class=""><a class="btn ghost sm" href="#ajustar">Ajustar</a></td>
+                        </tr>
+                        <tr>
+                            <td class="">Panela 500 g</td>
+                            <td class="">Despensa</td>
+                            <td class="num">27</td>
+                            <td class=""><span class="badge ok">27</span></td>
+                            <td class=""><a class="btn ghost sm" href="#ajustar">Ajustar</a></td>
+                        </tr>
+                        <tr>
+                            <td class="">Agua 600 ml</td>
+                            <td class="">Bebidas</td>
+                            <td class="num">60</td>
+                            <td class=""><span class="badge ok">60</span></td>
+                            <td class=""><a class="btn ghost sm" href="#ajustar">Ajustar</a></td>
+                        </tr>
+                        <tr>
+                            <td class="">Pan tajado</td>
+                            <td class="">Panadería</td>
+                            <td class="num">9</td>
+                            <td class=""><span class="badge warn">9 · bajo</span></td>
+                            <td class=""><a class="btn ghost sm" href="#ajustar">Ajustar</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal" id="ajustar">
+                <div class="box">
+                    <h2>Ajustar inventario</h2>
+                    <p class="sub" style="margin-bottom:14px">Se registrará un movimiento de tipo ajuste con tu usuario
+                        y la fecha.</p>
+                    <div class="f"><label>Producto</label><input type="text" value="Café molido 250 g" placeholder="">
+                    </div>
+                    <div class="row2">
+                        <div class="f"><label>Existencia actual</label><input type="text" value="6" placeholder="">
+                        </div>
+                        <div class="f"><label>Nueva cantidad</label><input type="number" value=""
+                                placeholder="0 o más"><span class="hint">No puede ser negativa.</span></div>
+                    </div>
+                    <div class="f"><label>Motivo</label><input type="text" value="" placeholder="ej. Conteo físico">
+                    </div>
+                    <div class="acts end"><a class="btn ghost" href="#">Cancelar</a><a class="btn " href="#">Aplicar
+                            ajuste</a></div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

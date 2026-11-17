@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Movimientos de inventario · FluxPOS</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Public+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/base.css">
+    <link rel="stylesheet" href="../assets/admin.css">
+</head>
+
+<body>
+    <!-- Movimientos de inventario (HU-11) -->
+    <div class="shell">
+        <aside class="side">
+            <div class="brand">FluxPOS</div><small>Administración</small><a href="a01-dashboard.html"
+                class="">Panel</a><a href="a09-ventas.html" class="">Ventas</a><a href="a11-compras.html"
+                class="">Compras</a><a href="a02-productos.html" class="">Productos</a><a href="a04-categorias.html"
+                class="">Categorías</a><a href="a05-inventario.html" class="">Inventario</a><a
+                href="a06-movimientos.html" class="on">Movimientos</a><a href="a07-clientes.html"
+                class="">Clientes</a><a href="a08-proveedores.html" class="">Proveedores</a><a href="a14-usuarios.html"
+                class="">Usuarios</a>
+            <div class="me">Laura Gómez<br><small>Administradora</small><a href="../shared/x01-login.html">Cerrar
+                    sesión</a></div>
+        </aside>
+        <main class="main">
+            <div class="head">
+                <div>
+                    <h1>Movimientos de inventario</h1>
+                    <p class="sub">Historial de cambios en las existencias. No se puede editar.</p>
+                </div>
+                <div class="acts"></div>
+            </div>
+            <div class="bar"><input class="grow" placeholder="Buscar producto"><select>
+                    <option>Todos los tipos</option>
+                    <option>Venta</option>
+                    <option>Compra</option>
+                    <option>Ajuste</option>
+                    <option>Anulación de venta</option>
+                    <option>Existencia inicial</option>
+                </select><input type="date"></div>
+            <div class="tw">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="">Fecha</th>
+                            <th class="">Producto</th>
+                            <th class="">Tipo</th>
+                            <th class="num">Cantidad anterior</th>
+                            <th class="num">Cantidad nueva</th>
+                            <th class="">Usuario</th>
+                            <th class="">Referencia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="">06/11 10:42</td>
+                            <td class="">Arroz 500 g</td>
+                            <td class=""><span class="badge info">Venta</span></td>
+                            <td class="num">45</td>
+                            <td class="num">42</td>
+                            <td class="">Carlos Rojas</td>
+                            <td class="">#0047</td>
+                        </tr>
+                        <tr>
+                            <td class="">06/11 09:15</td>
+                            <td class="">Aceite 1 L</td>
+                            <td class=""><span class="badge ok">Compra</span></td>
+                            <td class="num">6</td>
+                            <td class="num">18</td>
+                            <td class="">Laura Gómez</td>
+                            <td class="">Compra #0012</td>
+                        </tr>
+                        <tr>
+                            <td class="">05/11 16:40</td>
+                            <td class="">Café molido 250 g</td>
+                            <td class=""><span class="badge warn">Ajuste</span></td>
+                            <td class="num">9</td>
+                            <td class="num">6</td>
+                            <td class="">Laura Gómez</td>
+                            <td class="">Conteo físico</td>
+                        </tr>
+                        <tr>
+                            <td class="">05/11 14:32</td>
+                            <td class="">Panela 500 g</td>
+                            <td class=""><span class="badge bad">Anulación de venta</span></td>
+                            <td class="num">25</td>
+                            <td class="num">27</td>
+                            <td class="">Laura Gómez</td>
+                            <td class="">#0045</td>
+                        </tr>
+                        <tr>
+                            <td class="">05/11 11:02</td>
+                            <td class="">Agua 600 ml</td>
+                            <td class=""><span class="badge info">Venta</span></td>
+                            <td class="num">62</td>
+                            <td class="num">60</td>
+                            <td class="">Ana Prada</td>
+                            <td class="">#0041</td>
+                        </tr>
+                        <tr>
+                            <td class="">02/11 09:00</td>
+                            <td class="">Panela 500 g</td>
+                            <td class=""><span class="badge muted">Existencia inicial</span></td>
+                            <td class="num">0</td>
+                            <td class="num">30</td>
+                            <td class="">Laura Gómez</td>
+                            <td class="">Alta de producto</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

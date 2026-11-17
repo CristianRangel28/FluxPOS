@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Panel · FluxPOS</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Public+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/base.css">
+    <link rel="stylesheet" href="../assets/admin.css">
+</head>
+
+<body>
+    <!-- Panel (HU-09, HU-18) -->
+    <div class="shell">
+        <aside class="side">
+            <div class="brand">FluxPOS</div><small>Administración</small><a href="a01-dashboard.html"
+                class="on">Panel</a><a href="a09-ventas.html" class="">Ventas</a><a href="a11-compras.html"
+                class="">Compras</a><a href="a02-productos.html" class="">Productos</a><a href="a04-categorias.html"
+                class="">Categorías</a><a href="a05-inventario.html" class="">Inventario</a><a
+                href="a06-movimientos.html" class="">Movimientos</a><a href="a07-clientes.html" class="">Clientes</a><a
+                href="a08-proveedores.html" class="">Proveedores</a><a href="a14-usuarios.html" class="">Usuarios</a>
+            <div class="me">Laura Gómez<br><small>Administradora</small><a href="../shared/x01-login.html">Cerrar
+                    sesión</a></div>
+        </aside>
+        <main class="main">
+            <div class="head">
+                <div>
+                    <h1>Panel</h1>
+                    <p class="sub">Resumen de hoy, viernes 6 de noviembre</p>
+                </div>
+                <div class="acts"><a class="btn " href="a14-usuarios.html#nuevo">Añadir vendedor</a><a class="btn ghost"
+                        href="a12-compra-nueva.html">Nueva compra</a></div>
+            </div>
+            <div class="grid g4">
+                <div class="card kpi"><b>$ 1.284.500</b><span>Ventas de hoy</span></div>
+                <div class="card kpi"><b>47</b><span>Ventas registradas</span></div>
+                <div class="card kpi"><b>4</b><span>Productos por reponer</span></div>
+                <div class="card kpi"><b>$ 6.920.000</b><span>Compras del mes</span></div>
+            </div>
+            <div class="grid g21">
+                <div class="card">
+                    <h2>Ventas de los últimos 7 días</h2>
+                    <div class="bars"><i class="" style="height:55%"><small>Sáb</small></i><i class=""
+                            style="height:70%"><small>Dom</small></i><i class=""
+                            style="height:40%"><small>Lun</small></i><i class=""
+                            style="height:48%"><small>Mar</small></i><i class=""
+                            style="height:62%"><small>Mié</small></i><i class=""
+                            style="height:58%"><small>Jue</small></i><i class="now"
+                            style="height:85%"><small>Hoy</small></i></div>
+                </div>
+                <div class="card">
+                    <h2>Por reponer</h2>
+                    <div class="list">
+                        <div>Leche entera 1 L <span class="badge bad">Agotado</span></div>
+                        <div>Café molido 250 g <span class="badge warn">6</span></div>
+                        <div>Pan tajado <span class="badge warn">9</span></div>
+                        <div>Huevos AA x30 <span class="badge ok">12</span></div>
+                    </div>
+                </div>
+            </div>
+            <h2 style="margin-bottom:10px">Últimas ventas</h2>
+            <div class="tw">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="">N.º</th>
+                            <th class="">Hora</th>
+                            <th class="">Vendedor</th>
+                            <th class="num">Total</th>
+                            <th class="">Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="">#0047</td>
+                            <td class="">10:42</td>
+                            <td class="">Carlos Rojas</td>
+                            <td class="num">$ 28.000</td>
+                            <td class=""><span class="badge ok">Completada</span></td>
+                        </tr>
+                        <tr>
+                            <td class="">#0046</td>
+                            <td class="">10:31</td>
+                            <td class="">Carlos Rojas</td>
+                            <td class="num">$ 64.300</td>
+                            <td class=""><span class="badge ok">Completada</span></td>
+                        </tr>
+                        <tr>
+                            <td class="">#0045</td>
+                            <td class="">10:12</td>
+                            <td class="">Ana Prada</td>
+                            <td class="num">$ 9.900</td>
+                            <td class=""><span class="badge bad">Anulada</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

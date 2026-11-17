@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Categorías · FluxPOS</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Public+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/base.css">
+    <link rel="stylesheet" href="../assets/admin.css">
+</head>
+
+<body>
+    <!-- Categorías (HU-07, HU-08) -->
+    <div class="shell">
+        <aside class="side">
+            <div class="brand">FluxPOS</div><small>Administración</small><a href="a01-dashboard.html"
+                class="">Panel</a><a href="a09-ventas.html" class="">Ventas</a><a href="a11-compras.html"
+                class="">Compras</a><a href="a02-productos.html" class="">Productos</a><a href="a04-categorias.html"
+                class="on">Categorías</a><a href="a05-inventario.html" class="">Inventario</a><a
+                href="a06-movimientos.html" class="">Movimientos</a><a href="a07-clientes.html" class="">Clientes</a><a
+                href="a08-proveedores.html" class="">Proveedores</a><a href="a14-usuarios.html" class="">Usuarios</a>
+            <div class="me">Laura Gómez<br><small>Administradora</small><a href="../shared/x01-login.html">Cerrar
+                    sesión</a></div>
+        </aside>
+        <main class="main">
+            <div class="head">
+                <div>
+                    <h1>Categorías</h1>
+                    <p class="sub">Organizan el catálogo de productos</p>
+                </div>
+                <div class="acts"><a class="btn " href="#nueva">Nueva categoría</a></div>
+            </div>
+            <div class="tw">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="">Nombre</th>
+                            <th class="">Descripción</th>
+                            <th class="num">Productos</th>
+                            <th class=""></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="">Granos</td>
+                            <td class="">Arroz, lentejas, fríjol</td>
+                            <td class="num">9</td>
+                            <td class=""><a class="btn ghost sm" href="#nueva">Editar</a></td>
+                        </tr>
+                        <tr>
+                            <td class="">Despensa</td>
+                            <td class="">Aceites, café, panela</td>
+                            <td class="num">14</td>
+                            <td class=""><a class="btn ghost sm" href="#nueva">Editar</a></td>
+                        </tr>
+                        <tr>
+                            <td class="">Lácteos</td>
+                            <td class="">Leche, queso, yogur</td>
+                            <td class="num">7</td>
+                            <td class=""><a class="btn ghost sm" href="#nueva">Editar</a></td>
+                        </tr>
+                        <tr>
+                            <td class="">Bebidas</td>
+                            <td class="">Agua, jugos, gaseosas</td>
+                            <td class="num">11</td>
+                            <td class=""><a class="btn ghost sm" href="#nueva">Editar</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal" id="nueva">
+                <div class="box">
+                    <h2>Categoría</h2>
+                    <div class="f"><label>Nombre</label><input type="text" value="" placeholder="ej. Aseo"></div>
+                    <div class="f"><label>Descripción</label><textarea rows="3" placeholder="Opcional"></textarea></div>
+                    <div class="acts end"><a class="btn ghost" href="#">Cancelar</a><a class="btn " href="#">Guardar
+                            categoría</a></div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

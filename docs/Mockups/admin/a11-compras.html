@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Historial de compras · FluxPOS</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Public+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/base.css">
+    <link rel="stylesheet" href="../assets/admin.css">
+</head>
+
+<body>
+    <!-- Historial de compras (HU-21) -->
+    <div class="shell">
+        <aside class="side">
+            <div class="brand">FluxPOS</div><small>Administración</small><a href="a01-dashboard.html"
+                class="">Panel</a><a href="a09-ventas.html" class="">Ventas</a><a href="a11-compras.html"
+                class="on">Compras</a><a href="a02-productos.html" class="">Productos</a><a href="a04-categorias.html"
+                class="">Categorías</a><a href="a05-inventario.html" class="">Inventario</a><a
+                href="a06-movimientos.html" class="">Movimientos</a><a href="a07-clientes.html" class="">Clientes</a><a
+                href="a08-proveedores.html" class="">Proveedores</a><a href="a14-usuarios.html" class="">Usuarios</a>
+            <div class="me">Laura Gómez<br><small>Administradora</small><a href="../shared/x01-login.html">Cerrar
+                    sesión</a></div>
+        </aside>
+        <main class="main">
+            <div class="head">
+                <div>
+                    <h1>Compras</h1>
+                    <p class="sub">Adquisiciones a proveedores</p>
+                </div>
+                <div class="acts"><a class="btn " href="a12-compra-nueva.html">Nueva compra</a></div>
+            </div>
+            <div class="tw">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="">N.º</th>
+                            <th class="">Fecha</th>
+                            <th class="">Proveedor</th>
+                            <th class="">Registró</th>
+                            <th class="num">Total</th>
+                            <th class=""></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="">#0012</td>
+                            <td class="">06/11 09:15</td>
+                            <td class="">Distribuidora El Campo</td>
+                            <td class="">Laura Gómez</td>
+                            <td class="num">$ 1.240.000</td>
+                            <td class=""><a class="btn ghost sm" href="a13-compra-detalle.html">Ver detalle</a></td>
+                        </tr>
+                        <tr>
+                            <td class="">#0011</td>
+                            <td class="">02/11 15:40</td>
+                            <td class="">Lácteos del Oriente</td>
+                            <td class="">Laura Gómez</td>
+                            <td class="num">$ 680.000</td>
+                            <td class=""><a class="btn ghost sm" href="a13-compra-detalle.html">Ver detalle</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+/* TEMA ADMINISTRADOR - cambia estos 4 colores y toda la interfaz del admin se actualiza */
+:root {
+    --primary: #3A47B5;
+    --primary-ink: #fff;
+    --primary-soft: #E3E6F9;
+    --side: #151A3B
+}
+
+.shell {
+    display: grid;
+    grid-template-columns: 236px 1fr;
+    min-height: 100vh
+}
+
+.side {
+    background: var(--side);
+    color: #C4C9EC;
+    padding: 22px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    position: sticky;
+    top: 0;
+    height: 100vh
+}
+
+.brand {
+    font: 700 22px 'Bricolage Grotesque', sans-serif;
+    color: #fff;
+    padding: 0 12px 4px
+}
+
+.brand+small {
+    padding: 0 12px 20px;
+    color: #8D94CC
+}
+
+.side a {
+    color: inherit;
+    text-decoration: none;
+    padding: 9px 12px;
+    border-radius: 8px
+}
+
+.side a:hover {
+    background: rgba(255, 255, 255, .07)
+}
+
+.side a.on {
+    background: var(--primary);
+    color: #fff;
+    font-weight: 600
+}
+
+.side .me {
+    margin-top: auto;
+    padding: 12px;
+    border-top: 1px solid rgba(255, 255, 255, .12);
+    font-size: 14px
+}
+
+.side .me a {
+    padding: 0;
+    display: block;
+    margin-top: 4px;
+    color: #A9B0EE
+}
+
+.main {
+    padding: 28px 36px;
+    max-width: 1240px;
+    width: 100%
+}
+
+@media(max-width:900px) {
+    .shell {
+        grid-template-columns: 1fr
+    }
+
+    .side {
+        position: static;
+        height: auto;
+        flex-direction: row;
+        flex-wrap: wrap
+    }
+
+    .side .me {
+        margin: 0
+    }
+
+    .main {
+        padding: 20px
+    }
+}
