@@ -1,29 +1,53 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
+import BaseCard from '../components/BaseCard.vue'
+import PageHeader from '../components/PageHeader.vue'
 </script>
 
 <template>
-  <section class="view-card">
-    <h1>Dashboard — FluxPOS</h1>
-    <p>Panel principal inicial. Base lista para agregar indicadores y módulos operativos.</p>
-    <RouterLink class="nav-btn" to="/login">Volver a Login</RouterLink>
-  </section>
+  <div>
+    <PageHeader
+      title="Dashboard"
+      subtitle="Estructura visual inicial para métricas, ventas, compras e inventario."
+    >
+      <template #actions>
+        <RouterLink class="btn btn-secondary" to="/login">Volver a Login</RouterLink>
+      </template>
+    </PageHeader>
+
+    <div class="grid-modules">
+      <BaseCard>
+        <h2 class="card-title">Módulos operativos</h2>
+        <p class="card-copy">
+          Contenedor listo para integrar tablas, formularios y paneles de gestión.
+        </p>
+      </BaseCard>
+
+      <BaseCard>
+        <h2 class="card-title">Identidad visual</h2>
+        <p class="card-copy">
+          Variables y componentes compartidos activos para mantener consistencia en toda la app.
+        </p>
+      </BaseCard>
+    </div>
+  </div>
 </template>
 
 <style scoped>
-.view-card {
-  padding: 1.5rem;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
+.grid-modules {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
 }
 
-.nav-btn {
-  display: inline-block;
-  margin-top: 0.75rem;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  background-color: #111827;
-  color: #ffffff;
-  text-decoration: none;
+.card-title {
+  margin: 0 0 0.4rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.card-copy {
+  margin: 0;
+  color: var(--text-secondary);
 }
 </style>
