@@ -1,23 +1,42 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
+import LoginView from '../views/LoginView.vue'
+import DashboardView from '../views/DashboardView.vue'
+import NotFoundView from '../views/NotFoundView.vue'
+
+export const routes: RouteRecordRaw[] = [
+  {
+    path: '/',
+    redirect: '/login',
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: LoginView,
+    meta: { title: 'Iniciar sesión | FluxPOS' },
+  },
+  {
+    path: '/dashboard',
+    name: 'dashboard',
+    component: DashboardView,
+    meta: { title: 'Dashboard | FluxPOS' },
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'not-found',
+    component: NotFoundView,
+    meta: { title: 'Página no encontrada | FluxPOS' },
+  },
+]
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: HomeView,
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue'),
-    },
-  ],
+  routes,
+})
+
+router.afterEach((to) => {
+  if (typeof to.meta.title === 'string') {
+    document.title = to.meta.title
+  }
 })
 
 export default router
