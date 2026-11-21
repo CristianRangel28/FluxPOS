@@ -1,17 +1,28 @@
+
 -- ============================================
 -- FluxPOS
 -- 06 - Auditoría de movimientos del inventario
+-- Motor: PostgreSQL
+-- ============================================
+
+-- ============================================
+-- TABLA: inventory_movements
 -- ============================================
 
 CREATE TABLE inventory_movements (
     id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+
     product_id INTEGER NOT NULL,
     user_id INTEGER NOT NULL,
+
     movement_type VARCHAR(20) NOT NULL,
+
     quantity INTEGER NOT NULL,
+
     previous_quantity INTEGER NOT NULL,
     new_quantity INTEGER NOT NULL,
-    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT fk_inventory_movements_product
         FOREIGN KEY (product_id)
@@ -42,10 +53,18 @@ CREATE TABLE inventory_movements (
         CHECK (previous_quantity >= 0),
 
     CONSTRAINT chk_inventory_movements_new
-        CHECK (new_quantity >= 0)
+        CHECK (new_quantity >= 0),
+
+    CONSTRAINT chk_inventory_movements_difference
+        CHECK (
+            ABS(new_quantity - previous_quantity) = quantity
+        )
 );
 
--- Índices para consultar el historial
+-- ============================================
+-- INDICES
+-- ============================================
+
 CREATE INDEX idx_inventory_movements_product_id
     ON inventory_movements(product_id);
 
@@ -57,3 +76,5 @@ CREATE INDEX idx_inventory_movements_created_at
 
 CREATE INDEX idx_inventory_movements_type
     ON inventory_movements(movement_type);
+
+

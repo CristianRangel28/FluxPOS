@@ -1,19 +1,33 @@
+
 -- ============================================
 -- FluxPOS
 -- 04 - Ventas, detalles y pagos
+-- Motor: PostgreSQL
+-- ============================================
+
+-- ============================================
+-- TABLA: sales
 -- ============================================
 
 CREATE TABLE sales (
     id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+
     customer_id INTEGER NOT NULL,
     user_id INTEGER NOT NULL,
+
     sale_number VARCHAR(30) NOT NULL UNIQUE,
-    sale_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    sale_date TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
     subtotal NUMERIC(12, 2) NOT NULL,
     total NUMERIC(12, 2) NOT NULL,
+
     status VARCHAR(20) NOT NULL DEFAULT 'completed',
-    cancelled_at TIMESTAMP,
+
+    cancelled_at TIMESTAMPTZ,
     cancelled_by INTEGER,
+
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT fk_sales_customer
         FOREIGN KEY (customer_id)
@@ -32,6 +46,9 @@ CREATE TABLE sales (
         REFERENCES users(id)
         ON DELETE RESTRICT
         ON UPDATE CASCADE,
+
+    CONSTRAINT chk_sales_number
+        CHECK (LENGTH(TRIM(sale_number)) > 0),
 
     CONSTRAINT chk_sales_subtotal
         CHECK (subtotal >= 0),
@@ -54,10 +71,16 @@ CREATE TABLE sales (
         )
 );
 
+-- ============================================
+-- TABLA: sale_details
+-- ============================================
+
 CREATE TABLE sale_details (
     id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+
     sale_id INTEGER NOT NULL,
     product_id INTEGER NOT NULL,
+
     quantity INTEGER NOT NULL,
     unit_price NUMERIC(12, 2) NOT NULL,
     subtotal NUMERIC(12, 2) NOT NULL,
@@ -84,12 +107,21 @@ CREATE TABLE sale_details (
         CHECK (subtotal >= 0)
 );
 
+-- ============================================
+-- TABLA: payments
+-- ============================================
+
 CREATE TABLE payments (
     id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+
     sale_id INTEGER NOT NULL,
+
     name_method VARCHAR(50) NOT NULL,
+
     amount NUMERIC(12, 2) NOT NULL,
-    payment_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    payment_date TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
     reference VARCHAR(100),
 
     CONSTRAINT fk_payments_sale
@@ -98,11 +130,17 @@ CREATE TABLE payments (
         ON DELETE RESTRICT
         ON UPDATE CASCADE,
 
+    CONSTRAINT chk_payments_method
+        CHECK (LENGTH(TRIM(name_method)) > 0),
+
     CONSTRAINT chk_payments_amount
         CHECK (amount > 0)
 );
 
--- Índices para consultar ventas y sus relaciones
+-- ============================================
+-- INDICES
+-- ============================================
+
 CREATE INDEX idx_sales_customer_id
     ON sales(customer_id);
 
@@ -112,6 +150,9 @@ CREATE INDEX idx_sales_user_id
 CREATE INDEX idx_sales_sale_date
     ON sales(sale_date);
 
+CREATE INDEX idx_sales_status
+    ON sales(status);
+
 CREATE INDEX idx_sale_details_sale_id
     ON sale_details(sale_id);
 
@@ -120,3 +161,16 @@ CREATE INDEX idx_sale_details_product_id
 
 CREATE INDEX idx_payments_sale_id
     ON payments(sale_id);
+
+CREATE INDEX idx_payments_payment_date
+    ON payments(payment_date);
+
+-- ============================================
+-- TRIGGER: ACTUALIZACION AUTOMATICA
+-- Reutiliza la funcion del Script 01
+-- ============================================
+
+CREATE TRIGGER trg_sales_updated_at
+BEFORE UPDATE ON sales
+FOR EACH ROW
+EXECUTE FUNCTION update_updated_at();
