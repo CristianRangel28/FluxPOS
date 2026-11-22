@@ -84,3 +84,29 @@ El resultado deberá ofrecer una estructura organizada, datos consistentes y un 
 ---
 
 **FluxPOS** — Simplificando la gestión del punto de venta y el inventario.
+
+## Integracion y Comunicacion Local (Frontend - Backend)
+
+### 1. Variables de entorno
+En `frontend/.env` configurar la URL base de la API:
+```env
+VITE_API_URL=http://localhost:3000/api
+```
+
+### 2. Ejecucion en desarrollo
+1. **Backend (Puerto 3000):**
+   ```bash
+   cd backend
+   npm install
+   npm run dev
+   ```
+2. **Frontend (Puerto 5173):**
+   ```bash
+   cd frontend
+   npm install
+   npm run dev
+   ```
+
+### 3. Comprobacion de comunicacion
+- El backend habilita CORS para `http://localhost:5173` y `http://127.0.0.1:5173`.
+- Desde el frontend (`http://localhost:5173`), ejecutar la prueba hacia `GET /api/health` para validar recepcion de respuesta JSON y captura de errores de red/CORS.
