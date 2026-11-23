@@ -3,14 +3,18 @@
 const { Pool } = require('pg');
 require('dotenv').config();
 
-// Configuración del pool de conexiones
-const pool = new Pool({
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-});
+// Configuración del pool de conexiones (Soporta DATABASE_URL o variables individuales)
+const pool = new Pool(
+  process.env.DATABASE_URL
+    ? { connectionString: process.env.DATABASE_URL }
+    : {
+        host: process.env.DB_HOST || 'localhost',
+        port: process.env.DB_PORT || 5432,
+        user: process.env.DB_USER || 'postgres',
+        password: process.env.DB_PASSWORD,
+        database: process.env.DB_NAME || 'fluxpos',
+      }
+);
 
 /**
  * Ejecuta una consulta SQL parametrizada
