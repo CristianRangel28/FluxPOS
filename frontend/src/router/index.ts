@@ -1,7 +1,18 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 import LoginView from '../views/LoginView.vue'
 import DashboardView from '../views/DashboardView.vue'
+import ForbiddenView from '../views/ForbiddenView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
+import { setupAuthInterceptors, useAuth, type UserRole } from '../composables/useAuth'
+
+declare module 'vue-router' {
+  interface RouteMeta {
+    title?: string
+    requiresAuth?: boolean
+    guestOnly?: boolean
+    roles?: UserRole[]
+  }
+}
 
 export const routes: RouteRecordRaw[] = [
   {
@@ -12,13 +23,19 @@ export const routes: RouteRecordRaw[] = [
     path: '/login',
     name: 'login',
     component: LoginView,
-    meta: { title: 'Iniciar sesión | FluxPOS' },
+    meta: { title: 'Iniciar sesión | FluxPOS', guestOnly: true },
   },
   {
     path: '/dashboard',
     name: 'dashboard',
     component: DashboardView,
-    meta: { title: 'Dashboard | FluxPOS' },
+    meta: { title: 'Dashboard | FluxPOS', requiresAuth: true, roles: ['admin'] },
+  },
+  {
+    path: '/forbidden',
+    name: 'forbidden',
+    component: ForbiddenView,
+    meta: { title: 'Acceso restringido | FluxPOS', requiresAuth: true },
   },
   {
     path: '/:pathMatch(.*)*',
@@ -31,6 +48,32 @@ export const routes: RouteRecordRaw[] = [
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
+})
+
+setupAuthInterceptors(() => {
+  if (router.currentRoute.value.path !== '/login') {
+    void router.push('/login')
+  }
+})
+
+router.beforeEach((to) => {
+  const { isAuthenticated, role, homeRoute } = useAuth()
+
+  if (to.meta.requiresAuth && !isAuthenticated.value) {
+    return { path: '/login', query: { redirect: to.fullPath } }
+  }
+
+  if (to.meta.guestOnly && isAuthenticated.value) {
+    return homeRoute.value
+  }
+
+  if (to.meta.roles && to.meta.roles.length > 0) {
+    if (!role.value || !to.meta.roles.includes(role.value)) {
+      return '/forbidden'
+    }
+  }
+
+  return true
 })
 
 router.afterEach((to) => {
