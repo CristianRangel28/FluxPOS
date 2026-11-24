@@ -26,16 +26,32 @@ export const routes: RouteRecordRaw[] = [
     meta: { title: 'Iniciar sesión | FluxPOS', guestOnly: true },
   },
   {
+    path: '/admin',
+    name: 'admin',
+    component: DashboardView,
+    meta: { title: 'Administración | FluxPOS', requiresAuth: true, roles: ['admin'] },
+  },
+  {
     path: '/dashboard',
     name: 'dashboard',
     component: DashboardView,
-    meta: { title: 'Dashboard | FluxPOS', requiresAuth: true, roles: ['admin'] },
+    meta: { title: 'Dashboard | FluxPOS', requiresAuth: true, roles: ['admin', 'seller'] },
+  },
+  {
+    path: '/vender',
+    name: 'vender',
+    component: DashboardView,
+    meta: { title: 'Punto de Venta | FluxPOS', requiresAuth: true, roles: ['admin', 'seller'] },
+  },
+  {
+    path: '/sin-permiso',
+    name: 'sin-permiso',
+    component: ForbiddenView,
+    meta: { title: 'Acceso denegado | FluxPOS', requiresAuth: true },
   },
   {
     path: '/forbidden',
-    name: 'forbidden',
-    component: ForbiddenView,
-    meta: { title: 'Acceso restringido | FluxPOS', requiresAuth: true },
+    redirect: '/sin-permiso',
   },
   {
     path: '/:pathMatch(.*)*',
@@ -69,7 +85,7 @@ router.beforeEach((to) => {
 
   if (to.meta.roles && to.meta.roles.length > 0) {
     if (!role.value || !to.meta.roles.includes(role.value)) {
-      return '/forbidden'
+      return '/sin-permiso'
     }
   }
 

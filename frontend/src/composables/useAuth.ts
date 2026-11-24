@@ -84,7 +84,7 @@ function persistSession(nextToken: string | null, nextUser: AuthUser | null) {
 }
 
 export function getHomeRouteForRole(role?: UserRole | null): string {
-  return role === 'admin' ? '/dashboard' : '/pos'
+  return role === 'admin' ? '/admin' : '/dashboard'
 }
 
 export function setupAuthInterceptors(onUnauthorized?: () => void) {
