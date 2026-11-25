@@ -1,5 +1,14 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView, useRouter } from 'vue-router'
+import { useAuth } from '../composables/useAuth'
+
+const router = useRouter()
+const { isAuthenticated, isAdmin, logout } = useAuth()
+
+async function handleLogout() {
+  logout()
+  await router.push('/login')
+}
 </script>
 
 <template>
@@ -12,8 +21,15 @@ import { RouterLink, RouterView } from 'vue-router'
         </div>
 
         <nav class="main-nav" aria-label="Navegación principal">
-          <RouterLink class="nav-link" to="/login">Login</RouterLink>
-          <RouterLink class="nav-link" to="/dashboard">Dashboard</RouterLink>
+          <RouterLink v-if="!isAuthenticated" class="nav-link" to="/login">Login</RouterLink>
+          <template v-else>
+            <RouterLink v-if="isAdmin" class="nav-link" to="/admin">Admin</RouterLink>
+            <RouterLink class="nav-link" to="/dashboard">Dashboard</RouterLink>
+            <RouterLink class="nav-link" to="/vender">Vender</RouterLink>
+            <button type="button" class="nav-link logout-btn" @click="handleLogout">
+              Cerrar sesión
+            </button>
+          </template>
         </nav>
       </div>
     </header>
@@ -90,6 +106,9 @@ import { RouterLink, RouterView } from 'vue-router'
   font-weight: 500;
   text-decoration: none;
   color: var(--text-secondary);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
   transition: background-color 0.15s ease, color 0.15s ease;
 }
 
@@ -102,6 +121,16 @@ import { RouterLink, RouterView } from 'vue-router'
   background-color: #eff6ff;
   color: var(--accent-primary);
   font-weight: 600;
+}
+
+.logout-btn {
+  color: #b91c1c;
+  font-weight: 600;
+}
+
+.logout-btn:hover {
+  background-color: #fef2f2;
+  color: #991b1b;
 }
 
 .main-container {
