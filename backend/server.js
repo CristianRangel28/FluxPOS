@@ -1,19 +1,25 @@
-require('dotenv').config();
 const express = require('express');
-const cors = require('cors');
-const apiRoutes = require('./routes');
-
+const cors = require('cors');  // ✅ Línea que faltaba
 const app = express();
+
 const PORT = process.env.PORT || 3000;
 
-const corsOptions = { origin: ['http://localhost:5173', 'http://127.0.0.1:5173'], methods: ['GET', 'POST', 'PUT', 'DELETE'], allowedHeaders: ['Content-Type', 'Authorization'] };
+const corsOptions = { 
+  origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
+
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const apiRoutes = require('./routes');
+app.use('/api', apiRoutes);
+
 app.get('/', (req, res) => {
   res.json({
-    mensaje: '¡Bienvenido a FluxPOS API! ',
+    mensaje: '¡Bienvenido a FluxPOS API!',
     version: '1.0.0',
     rutas_disponibles: [
       '/api/health',
@@ -26,9 +32,6 @@ app.get('/', (req, res) => {
   });
 });
 
-app.use('/api', apiRoutes);
-
-//  Quité el '*' para que funcione correctamente
 app.use((req, res) => {
   res.status(404).json({
     error: 'Ruta no encontrada',
@@ -38,8 +41,8 @@ app.use((req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(` Servidor corriendo en el puerto ${PORT}`);
-  console.log(` API base: http://localhost:${PORT}/api`);
+  console.log(`Servidor corriendo en el puerto ${PORT}`);
+  console.log(`API base: http://localhost:${PORT}/api`);
 });
 
 module.exports = app;

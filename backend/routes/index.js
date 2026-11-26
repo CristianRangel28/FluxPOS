@@ -1,47 +1,11 @@
 const express = require('express');
 const router = express.Router();
-
 const healthRoutes = require('./health.routes');
+const userRoutes = require('../modules/users/users.routes'); // ✅ 1. Importas primero
+
 router.use('/health', healthRoutes);
+router.use('/usuarios', userRoutes); // ✅ 2. Usas después
 
-router.use('/usuarios', (req, res) => {
-  res.status(200).json({
-    mensaje: 'Módulo de Usuarios',
-    estado: 'En desarrollo',
-    ruta_base: '/api/usuarios'
-  });
-});
+// Aquí puedes agregar tus otras rutas después
 
-router.use('/productos', (req, res) => {
-  res.status(200).json({
-    mensaje: 'Módulo de Productos',
-    estado: 'En desarrollo',
-    ruta_base: '/api/productos'
-  });
-});
-
-router.use('/ventas', (req, res) => {
-  res.status(200).json({
-    mensaje: 'Módulo de Ventas',
-    estado: 'En desarrollo',
-    ruta_base: '/api/ventas'
-  });
-});
-
-router.use('/inventario', (req, res) => {
-  res.status(200).json({
-    mensaje: 'Módulo de Inventario',
-    estado: 'En desarrollo',
-    ruta_base: '/api/inventario'
-  });
-});
-
-router.use('/reportes', (req, res) => {
-  res.status(200).json({
-    mensaje: 'Módulo de Reportes',
-    estado: 'En desarrollo',
-    ruta_base: '/api/reportes'
-  });
-});
-
-module.exports = router;
+module.exports = router; // ✅ 3. Exportas al final SIEMPRE
