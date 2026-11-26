@@ -44,4 +44,13 @@ router.use('/reportes', (req, res) => {
   });
 });
 
+
+const categoryRoutes = require('./categories.routes');
+const productRoutes = require('./products.routes');
+
+router.use('/categories', categoryRoutes);
+router.use('/products', productRoutes);
+
 module.exports = router;
+
+
